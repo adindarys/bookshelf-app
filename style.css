@@ -1,0 +1,258 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background: #EEEEEE;
+  color: #222831;
+  line-height: 1.6;
+}
+
+header {
+  background: #222831;
+  color: #EEEEEE;
+  padding: 1.5rem;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+}
+
+header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+section {
+  background: #FFFFFF;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border-radius: 14px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  animation: fadeIn 0.6s ease forwards;
+}
+
+section h2 {
+  margin-bottom: 1rem;
+  color: #00ADB5;
+  font-size: 1.4rem;
+  border-bottom: 2px solid #393E46;
+  padding-bottom: 0.5rem;
+}
+
+form div {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+input[type="text"],
+input[type="number"] {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #393E46;
+  border-radius: 10px;
+  outline: none;
+  transition: border 0.3s;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus {
+  border-color: #00ADB5;
+}
+
+input[type="checkbox"] {
+  transform: scale(1.2);
+  margin-left: 0.5rem;
+}
+
+button {
+  background: #00ADB5;
+  color: #EEEEEE;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  margin-top: 0.5rem;
+}
+
+button:hover {
+  background: #393E46;
+  transform: scale(1.05);
+}
+
+#incompleteBookList,
+#completeBookList {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+[data-testid="bookItem"] {
+  background: #EEEEEE;
+  padding: 1rem;
+  border-left: 5px solid #00ADB5;
+  border-radius: 10px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  opacity: 0;
+  animation: fadeIn 0.6s ease forwards;
+}
+
+[data-testid="bookItem"]:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+[data-testid="bookItem"] h3 {
+  margin-bottom: 0.3rem;
+}
+
+[data-testid="bookItem"] p {
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+[data-testid="bookItem"] div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+[data-testid="bookItem"] button {
+  font-size: 0.8rem;
+  padding: 0.4rem 0.8rem;
+}
+
+[data-testid="bookItemIsCompleteButton"] {
+  background: #393E46;
+  color: #EEEEEE;
+}
+
+[data-testid="bookItemIsCompleteButton"]:hover {
+  background: #00ADB5;
+}
+
+[data-testid="bookItemDeleteButton"] {
+  background: #FF6B6B;
+  color: #FFFFFF;
+}
+
+[data-testid="bookItemDeleteButton"]:hover {
+  background: #E55039;
+}
+
+[data-testid="bookItemEditButton"] {
+  background: #00ADB5;
+  color: #222831;
+}
+
+[data-testid="bookItemEditButton"]:hover {
+  background: #393E46;
+  color: #EEEEEE;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(34, 40, 49, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.edit-form {
+  background: #FFFFFF;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+  width: 320px;
+  animation: fadeInScale 0.3s ease;
+}
+
+.edit-form h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  text-align: center;
+  color: #00ADB5;
+}
+
+.edit-form input[type="text"],
+.edit-form input[type="number"] {
+  width: 100%;
+  padding: 0.6rem;
+  margin-bottom: 0.8rem;
+  border: 1px solid #393E46;
+  border-radius: 10px;
+  font-size: 0.95rem;
+}
+
+.edit-form label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+  color: #222831;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.edit-form button {
+  flex: 1;
+  padding: 0.6rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.edit-form button[type="submit"] {
+  background: #00ADB5;
+  color: #EEEEEE;
+}
+
+.edit-form button[type="submit"]:hover {
+  background: #393E46;
+  transform: scale(1.05);
+}
+
+.edit-form button#cancelEdit {
+  background: #393E46;
+  color: #EEEEEE;
+}
+
+.edit-form button#cancelEdit:hover {
+  background: #222831;
+  transform: scale(1.05);
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
